@@ -1,13 +1,18 @@
 pipeline {
     agent any 
     stages {
-        stage('build') {
+        stage('Test build') {
             steps {
                 sh 'echo "Hello world"'
                 sh '''
                     echo "Multiline shell steps works too"
                     ls -lah
                 '''
+            }
+        }
+        stage('Lint HTML') {
+            steps {
+                sh 'tidy -q -e *.html'
             }
         } 
         stage('Upload to AWS.') {
@@ -18,11 +23,6 @@ pipeline {
                     }     
                 }
             }   
-        }
-        stage(' Linter HTML') {
-            steps {
-                sh 'tidy -q -e *.html'
-            }
         }
     }
 }

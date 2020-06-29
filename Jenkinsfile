@@ -19,5 +19,10 @@ pipeline {
                 }
             }   
         }
+        stage(' Linter HTML') {
+            steps {
+                sh 'tidy -q -e *.html'
+            }
+        }
     }
 }

@@ -9,7 +9,7 @@ pipeline {
                     ls -lah
                 '''
             }
-        }, 
+        } 
         stage('Upload to AWS.') {
             steps {
                 retry(3){
